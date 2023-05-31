@@ -2,19 +2,19 @@
 
 runtime: python27
 threadsafe: true
-
 handlers:
 - url: /
   script: main.app
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 // index.html
 
 <html>
@@ -83,6 +83,7 @@ handlers:
 
 
 
+
 // main.py (Python Souce File)
 
 import os
@@ -116,6 +117,7 @@ class MainPage(webapp2.RequestHandler):
         self.response.write(template.render(path, template_values))
 
 app = webapp2.WSGIApplication([('/', MainPage)], debug=True)
+
 
 
 
