@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Login Here..</h1>
+    <div class="container">
+        <form id="registration-form">
+
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" placeholder="Enter Your Name..">
+
+            <label for="email">Email: </label>
+            <input type="email" name="email" id="email" placeholder="Enter Your Email..">
+
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password" placeholder="Enter Your Password..">
+            
+            <button type = "submit" id="submit" onclick="data()">Register</button>
+            
+
+        </form>
+    </div>
+
+    <script>
+        function data(){
+
+            var name = document.getElementById("name").value
+            var email = document.getElementById("email").value
+            var password = document.getElementById("password").value
+
+            var userdata = {
+                name:name,
+                email:email,
+                password:password
+            }
+
+           var xmr = new XMLHttpRequest();
+           xmr.open("POST","http://127.0.0.1:5500/",true);
+           xmr.onreadystatechange = () => {
+            localStorage.setItem("userdata",JSON.stringify(userdata));
+            window.location.href= "display.html";
+           }
+           xmr.send(JSON.stringify(userdata));
+           alert("Hey! You are Registered");
+           form.reset();
+        }
+    </script>
+</body>
+</html>
