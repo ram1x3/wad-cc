@@ -1,0 +1,273 @@
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa
+
+$ git config --global user.name "Nishant"
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa
+
+$ git config --global user.email "nishantda427@gmail.com"
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa
+
+$ git config --list
+
+diff.astextplain.textconv=astextplain
+
+filter.lfs.clean=git-lfs clean -- %f
+
+filter.lfs.smudge=git-lfs smudge -- %f
+
+filter.lfs.process=git-lfs filter-process
+
+filter.lfs.required=true
+
+http.sslbackend=openssl
+
+http.sslcainfo=F:/Git/mingw64/etc/ssl/certs/ca-bundle.crt
+
+core.autocrlf=true
+
+core.fscache=true
+
+core.symlinks=true
+
+pull.rebase=false
+
+credential.helper=manager
+
+credential.https://dev.azure.com.usehttppath=true
+
+init.defaultbranch=master
+
+user.name=Nishant
+
+user.email=nishantda427@gmail.com
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa
+
+$ git init
+
+Initialized empty Git repository in D:/gitaa/.git/
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ touch file1.txt
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git add file1.txt
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git status
+
+On branch master
+
+No commits yet
+
+Changes to be committed:
+
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   file1.txt
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git remote add origin https://github.com/nishantdhakde/practice1.git
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git commit -m "my first commit"
+
+[master (root-commit) e3cf4bd] my first commit
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+ create mode 100644 file1.txt
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git push -u origin master
+
+Enumerating objects: 3, done.
+
+Counting objects: 100% (3/3), done.
+
+Writing objects: 100% (3/3), 214 bytes | 214.00 KiB/s, done.
+
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+
+To https://github.com/nishantdhakde/practice1.git
+
+ * [new branch]      master -> master
+
+branch 'master' set up to track 'origin/master'.
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git branch b1
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git branch --list
+
+  b1
+
+* master
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git branch -d b1
+
+Deleted branch b1 (was e3cf4bd).
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git branch b1
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git checkout b1
+
+Switched to branch 'b1'
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (b1)
+
+$ touch file3.txt
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (b1)
+
+$ git add file3.txt
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (b1)
+
+$ git status
+
+On branch b1
+
+Changes to be committed:
+
+  (use "git restore --staged <file>..." to unstage)
+
+        new file:   file3.txt
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (b1)
+
+$ git commit -m "my commit"
+
+[b1 5d80c6b] my commit
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+ create mode 100644 file3.txt
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (b1)
+
+$ git remote add one https://github.com/nishantdhakde/practice1.git
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (b1)
+
+$ git push -u one b1
+
+Enumerating objects: 3, done.
+
+Counting objects: 100% (3/3), done.
+
+Delta compression using up to 8 threads
+
+Compressing objects: 100% (2/2), done.
+
+Writing objects: 100% (2/2), 236 bytes | 236.00 KiB/s, done.
+
+Total 2 (delta 0), reused 0 (delta 0), pack-reused 0
+
+remote:
+
+remote: Create a pull request for 'b1' on GitHub by visiting:
+
+remote:      https://github.com/nishantdhakde/practice1/pull/new/b1
+
+remote:
+
+To https://github.com/nishantdhakde/practice1.git
+
+ * [new branch]      b1 -> b1
+
+branch 'b1' set up to track 'one/b1'.
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (b1)
+
+$ git checkout -m master
+
+Switched to branch 'master'
+
+Your branch is up to date with 'origin/master'.
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git branch -m b1 b2
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git branch --list
+
+  b2
+
+* master
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git branch b3
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git branch --list
+
+  b2
+
+  b3
+
+* master
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git checkout b2
+
+Switched to branch 'b2'
+
+Your branch is up to date with 'one/b1'.
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (b2)
+
+$ git merge b3
+
+Already up to date.
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (b2)
+
+$ git merge b2
+
+Already up to date.
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (b2)
+
+$ git checkout -m master
+
+Switched to branch 'master'
+
+Your branch is up to date with 'origin/master'.
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$ git pull one master
+
+From https://github.com/nishantdhakde/practice1
+
+ * branch            master     -> FETCH_HEAD
+
+ * [new branch]      master     -> one/master
+
+Already up to date.
+
+HP@LAPTOP-MF2PA1JS MINGW64 /d/gitaa (master)
+
+$
