@@ -1,0 +1,62 @@
+// register.component.css
+
+@import "~bootstrap/dist/css/bootstrap.min.css"
+
+
+
+
+// register.component.html
+
+<form>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="name" class="form-control" id="name" name="nm"  placeholder="name" [(ngModel)]="signupObj.userName">
+       
+      </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" name="em" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="signupObj.email
+      ">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" name="pm" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="signupObj.password">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="register()">Submit</button>
+  </form>
+
+
+
+
+// register.component.ts
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
+})
+export class RegisterComponent implements OnInit {
+  ngOnInit(): void {
+
+  }
+  signupUser: any[] = []
+  signupObj: any = {
+    userName: '',
+    email: '',
+    password: ''
+  }
+
+  register() {
+    this.signupUser.push(this.signupObj);
+
+    localStorage.setItem("signupUser", JSON.stringify(this.signupUser))
+    this.signupObj = {
+      userName: '',
+      email: '',
+      password: ''
+    }
+  }
+}

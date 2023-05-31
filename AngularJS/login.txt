@@ -1,0 +1,68 @@
+// login.component.css
+
+@import "~bootstrap/dist/css/bootstrap.min.css"
+
+
+
+
+// login.component.html
+
+<form>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" name = "em" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email " [(ngModel)]="loginObj.email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" name="pm" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="loginObj.password">
+    </div>
+    <button type="submit" (click)="login()" class="btn btn-primary">Submit</button>
+  </form>
+
+
+
+
+// login.component.ts
+
+import { Component,OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+})
+export class LoginComponent implements OnInit {
+
+  signupUser:any[]=[];
+  signupObj:any={
+    userName:'',
+    email:'',
+    password:''
+  }
+
+  loginObj:any={
+    email:'',
+    password:''
+  }
+
+  ngOnInit(): void {
+    const localData=localStorage.getItem("signupUser");
+    if(localData !=null){
+      this.signupUser = JSON.parse(localData);
+    }
+  }
+
+  
+
+  login(){
+    const isUserExist = this.signupUser.find(m => m.email == this.loginObj.email && m.password == this.loginObj.password);
+    if(isUserExist != undefined)
+    {
+      alert("User logged in successfully");
+    }
+    else{
+      alert("Wrong credentials.......Enter again");
+    }
+}
+}
