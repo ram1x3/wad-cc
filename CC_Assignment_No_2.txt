@@ -1,0 +1,204 @@
+// app.yaml
+
+runtime: python27
+threadsafe: true
+
+handlers:
+- url: /
+  script: main.app
+
+
+
+
+
+
+
+
+
+// index.html
+
+<html>
+<style>
+    h2{
+      text-align: center;
+    }
+    .card{
+      background-color: aqua;
+      width: 400px;
+      margin: auto;
+      border-radius: 10px;
+    }
+    form{
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      
+    }
+    label{
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: large;
+    }
+    input{
+      margin-bottom: 20px;
+      margin-right: 80px;
+    }
+    button{
+      width: 80px;
+      background-color: lightgreen;
+      color: black;
+      margin-bottom: 10px;
+      
+    }
+    button:hover{
+      transform: scale(1.1);
+      transition: transform 0.2s;
+    }
+  </style>
+
+<head>
+</head>
+
+<body>
+  <h2 >Post Office Finder Using WebApp</h2>
+  <div class="card">
+    
+    <form action="/" method="post" >
+      <label>Location Zip Code:</label> 
+      <input id="pincode" name='pincode' type="text" ><br>
+      <button type="submit">Submit</button>
+      <button>Clear</button>
+      
+    </form>
+  </div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+// main.py (Python Souce File)
+
+import os
+import json
+import urllib
+import webapp2
+from google.appengine.ext.webapp import template
+
+class MainPage(webapp2.RequestHandler):
+    def get(self):
+        template_values = {}
+        path = os.path.join(os.path.dirname(__file__), 'index.html')
+        self.response.write(template.render(path, template_values))
+
+    def post(self):
+        pincode = self.request.get('pincode')
+        url = "https://api.postalpincode.in/pincode/" + pincode
+        data = urllib.urlopen(url).read()
+        data = json.loads(data)
+        state = data[0]['PostOffice'][0]['State']
+        name = data[0]['PostOffice'][0]['Name']
+        block = data[0]['PostOffice'][0]['Block']
+        district = data[0]['PostOffice'][0]['District']
+        template_values = {
+            "state": state,
+            "name": name,
+            "block": block,
+            "district": district
+        }
+        path = os.path.join(os.path.dirname(__file__), 'results.html')
+        self.response.write(template.render(path, template_values))
+
+app = webapp2.WSGIApplication([('/', MainPage)], debug=True)
+
+
+
+
+
+
+
+
+
+// results.html
+
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #weatherResults {
+      background-color: #83e9c2;
+      font-size: 24px;
+      padding: 30px;
+      display: inline-block;
+      text-align: center;
+      margin: 20px;
+      margin-top: 10%;
+      border: 2px solid black;
+      border-radius: 5px;
+    }
+  </style>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Post Office Information</title>
+  </head>
+  <body>
+    <div id="weatherResults">
+      <table>
+        <tr>
+          <th>
+            <h3>State of Post Office :</h3>
+          </th>
+          <th>
+            <h3>{{ state }}</h3>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <h3>Name of Post Office :</h3>
+          </th>
+          <th>
+            <h3>{{ name }}</h3>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <h3>Block of Post Office:</h3>
+          </th>
+          <th>
+            <h3>{{ block }}</h3>
+          </th>
+        </tr>
+        <tr>
+          <th>
+            <h3>District of Post Office:</h3>
+          </th>
+          <th>
+            <h3>{{ district }}</h3>
+          </th>
+        </tr>
+      </table>
+      <a href="http://localhost:8080/"><h4>Back to the Home page</h4></a>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+*****END*****
