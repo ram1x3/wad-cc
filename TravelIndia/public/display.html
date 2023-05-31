@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-info">
+        <form class="form">
+            <label class="form-label" for="fname">First Name : </label>
+            <p class="form-control" id="fname" name="fname"></p>
+            <label class="form-label" for="lname">Last Name : </label>
+            <p class="form-control" id="lname" name="lname"></p>
+            <label class="form-label" for="age">Age : </label>
+            <p class="form-control" id="age" name="age"></p>
+            <label class="form-label" for="add">Address : </label>
+            <p class="form-control" id="add" name="add"></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("fname").innerHTML = localStorage.getItem("Fname");
+        document.getElementById("lname").innerHTML = localStorage.getItem("Lname");
+        document.getElementById("age").innerHTML = localStorage.getItem("Age");
+        document.getElementById("add").innerHTML = localStorage.getItem("Address");
+    </script>
+
+</body>
+</html>

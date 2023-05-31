@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <div class="log-form">
+        <form class="form" (submit)="loginUser()">
+            <h3>Login</h3>
+            <label for="email" class="form-label">Email : </label>
+            <input type="email" class="form-control" name="email" [(ngModel)]="email" id="email">
+
+            <label for="password" class="form-label">Password : </label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="pass" id="password">
+
+            <button class="btn btn-success btn-sm m-3"> Login</button>
+        </form>
+    </div>
+</body>
+</html>

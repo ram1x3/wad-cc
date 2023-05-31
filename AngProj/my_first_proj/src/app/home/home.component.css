@@ -1,0 +1,9 @@
+.home{
+    display: flex;
+    justify-content: center;  
+    margin-top: 200px; 
+}
+
+h3{
+    color: red;
+}
