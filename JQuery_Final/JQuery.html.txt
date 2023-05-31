@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery Mobile</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="sttle.css">
+</head>
+<body>
+    <div data-role="page" id="home">
+        <div data-role="header" data-theme="b">
+            <h1>PVG'S College Of Engineering,Pune</h1>
+        </div>
+        <br><br>
+        <p>
+            <center>
+            <h3>
+            Our College Provides Best Courses and is affilated under pune university
+            Established in 1985, Pune Vidhyarthi Griha’s College of Engineering and Technology and G K Pate(Wani)
+             Institute of Management, an affiliate to the Savitribai Phule Pune University and accredited ‘A’ by NAAC 
+             is one of the reputed engineering colleges in India. College provides courses on Engineering disciplines 
+             and offers some of the most advanced platforms and infrastructure to its students.
+            </h3>
+            </center>
+        </p>
+
+        <div data-role="main" data-theme="l">
+            <div class="ui-grid-d">
+                <div class="ui-block-a">
+                    <h2>Computer Department</h2>
+                    <img src="./images/Comp.jpeg" alt="Computer">  
+                  <a href="#computer">  <button class="ui-btn">Computer</button></a>
+                </div>
+                <div class="ui-block-b">
+                    <h2>IT Department</h2>
+                    <img src="./images/IT.jpeg" alt="Computer">  
+                    <button class="ui-btn">IT</button>
+                </div>
+                <div class="ui-block-c">
+                    <h2>Electrical Department</h2>
+                    <img src="./images/Elect.jpeg" alt="Computer">  
+                    <button class="ui-btn" src="">Electrical</button>
+                </div>
+                <div class="ui-block-d">
+                    <h2>Mechanical Department</h2>
+                    <img src="./images/Mech.jpeg" alt="Computer">  
+                    <button class="ui-btn">Mechanical</button>
+                </div>
+                <div class="ui-block-e">
+                    <h2>ETC Department</h2>
+                    <img src="./images/ETC.jpeg" alt="Computer">  
+                    <button class="ui-btn">ETC</button>
+                </div>
+            </div>
+        </div>
+        <br> <br> <br>
+        <div data-role="footer" data-theme="l">
+            <h3>
+                Copyright | Karan Kukreja, All Rights Reserved
+            </h3>
+        </div>
+    </div>
+
+
+    <div data-role="page" id="computer">
+        <div data-role="header" data-theme="b">
+            <h1>Computer Department</h1>
+        </div>
+        <br><br>
+        <p>
+            <center>
+            <h3>
+            Our College Provides Best Courses and is affilated under pune university
+            Established in 1985, Pune Vidhyarthi Griha’s College of Engineering and Technology and G K Pate(Wani)
+             Institute of Management, an affiliate to the Savitribai Phule Pune University and accredited ‘A’ by NAAC 
+             is one of the reputed engineering colleges in India. College provides courses on Engineering disciplines 
+             and offers some of the most advanced platforms and infrastructure to its students.
+            </h3>
+            </center>
+        </p>
+
+        <div data-role="main" data-theme="l">
+
+        </div>
+        <br> <br> <br>
+        <div data-role="footer" data-theme="l">
+            <h3>
+                Copyright | Karan Kukreja, All Rights Reserved
+            </h3>
+        </div>
+    </div>
+</body>
+</html>
