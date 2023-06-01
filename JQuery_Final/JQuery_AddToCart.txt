@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery Mobile library -->
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/mobile/1.5.0/jquery.mobile-1.5.0.min.css"
+    />
+    <script src="https://code.jquery.com/mobile/1.5.0/jquery.mobile-1.5.0.min.js"></script>
+  </head>
+
+  <body>
+    <div data-role="page" id="main-page">
+      <div data-role="header">
+        <h1>Product List</h1>
+      </div>
+
+      <div role="main" class="ui-content">
+        <ul data-role="listview" data-inset="true" id="product-list">
+          <li>
+            <label>
+              <input type="checkbox" name="product" value="item1" />
+              Item 1
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="product" value="item2" />
+              Item 2
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="checkbox" name="product" value="item3" />
+              Item 3
+            </label>
+          </li>
+        </ul>
+        <a href="#cart-page" data-role="button" id="add-to-cart-button"
+          >Add to Cart</a
+        >
+      </div>
+    </div>
+
+    <div data-role="page" id="cart-page">
+      <div data-role="header">
+        <h1>Cart</h1>
+      </div>
+
+      <div role="main" class="ui-content">
+        <ul data-role="listview" data-inset="true" id="cart-list">
+          <!-- Cart items will be dynamically added here -->
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // Handle the "Add to Cart" button click
+        $("#add-to-cart-button").click(function () {
+          // Get all selected checkboxes
+          var selectedItems = $('input[name="product"]:checked');
+
+          // Loop through the selected items
+          selectedItems.each(function () {
+            var item = $(this).val();
+
+            // Add the selected item to the cart list
+            $("#cart-list").append(item + "<br>");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
