@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Department List</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+
+	<!-- Department List page -->
+	<div data-role="page" id="dept-list">
+		<div data-role="header">
+			<h1>Department List</h1>
+		</div>
+		<div data-role="content">
+			<div class="ui-grid-d">
+				<div class="ui-block-a"><a href="#dept-info-1" data-role="button" style="background-color: aqua;">Information Tech</a></div>
+				<div class="ui-block-b"><a href="#dept-info-2" data-role="button" style="background-color: aqua;">Comp</a></div>
+				<div class="ui-block-c"><a href="#dept-info-3" data-role="button" style="background-color: aqua;">ENTC</a></div>
+				<div class="ui-block-d"><a href="#dept-info-4" data-role="button" style="background-color: aqua;">Mechanical</a></div>
+				<div class="ui-block-e"><a href="#dept-info-5" data-role="button" style="background-color: aqua;">Electrical</a></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Department Information pages -->
+	<div data-role="page" id="dept-info-1">
+		<div data-role="header">
+			<h1>Information Tech</h1>
+		</div>
+		<div data-role="content">
+			<p>Information about Department 1.</p>
+			<p>Department 1 offers courses in programming, database management, and networking.</p>
+		</div>
+	</div>
+	<div data-role="page" id="dept-info-2">
+		<div data-role="header">
+			<h1>Comp</h1>
+		</div>
+		<div data-role="content">
+			<p>Information about Department 2.</p>
+			<p>Department 2 focuses on computer hardware, software development, and algorithms.</p>
+		</div>
+	</div>
+	<div data-role="page" id="dept-info-3">
+		<div data-role="header">
+			<h1>ENTC</h1>
+		</div>
+		<div data-role="content">
+			<p>Information about Department 3.</p>
+			<p>Department 3 specializes in electronics, telecommunications, and signal processing.</p>
+		</div>
+	</div>
+	<div data-role="page" id="dept-info-4">
+		<div data-role="header">
+			<h1>Mechanical</h1>
+		</div>
+		<div data-role="content">
+			<p>Information about Department 4.</p>
+			<p>Department 4 offers courses in mechanical design, thermodynamics, and materials engineering.</p>
+		</div>
+	</div>
+	<div data-role="page" id="dept-info-5">
+		<div data-role="header">
+			<h1>Electrical</h1>
+		</div>
+		<div data-role="content">
+			<p>Information about Department 5.</p>
+			<p>Department 5 focuses on electrical circuits, power systems, and control theory.</p>
+		</div>
+	</div>
+
+</body>
+</html>
