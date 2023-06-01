@@ -1,77 +1,85 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const url = 'mongodb://127.0.0.1:27017';
-const user = require('./models.js');
+const express = require('express')
+const mongoose = require('mongoose')
 
-const app = express();
+const user = require('./models.js')
 
-mongoose.connect(url,{useNewUrlParser:true});
+const url = 'mongodb://localhost:27017'
 
-const con = mongoose.connection;
+mongoose.connect(url, {useNewUrlParser:true})
 
-con.on('open',function(){
-    console.log("Connected.......")
-})
-app.use(express.json());
-
-app.listen(9000,function(){
-    console.log("App is running......")
+const con = mongoose.connection
+con.on('open', function(){
+    console.log("connected")
 })
 
 
-app.post('/',async(req,res)=>{
+const app = express()
+
+app.use(express.json())
+app.listen(9000, function(){
+    console.log("running.....")
+})
+
+app.post('/', async(req,res)=>{
     const newuser = new user({
         name:req.body.name,
-        password:req.body.password,
         email:req.body.email,
+        password:req.body.password,
         age:req.body.age
     })
-
     try{
-        const u = await newuser.save();
+        const u = await newuser.save()
         res.json(u)
     }
-    catch(err){
-        res.send("error");
-        console.log("error is "+ err)
+    catch{
+        console.log('post error')
     }
 })
 
-app.get('/:id',async(req,res)=>{
+app.put('/:id', async(req,res)=>{
     try{
-        const oneuser = await user.findById(req.params.id)
+    const oneuser = await user.findById(req.params.id)
+        oneuser.name=req.body.name,
+        oneuser.email=req.body.email,
+        oneuser.password=req.body.password,
+        oneuser.age=req.body.age
+    
+        const u = await oneuser.save()
+        res.json(u)
+    }
+    catch{
+        console.log('put error')
+    }
+})
+
+app.get('/:id', async(req,res)=>{
+    try{
+    const oneuser = await user.findById(req.params.id)    
         res.json(oneuser)
     }
     catch{
-        res.send("something went wrong")
+        console.log('get by id error')
     }
 })
 
-app.put('/:id',async(req,res)=>{
+app.get('/', async(req,res)=>{
     try{
-        const oneuser = await user.findById(req.params.id);
-        oneuser.name=req.body.name,
-        oneuser.password=req.body.password,
-        oneuser.email=req.body.email,
-        oneuser.age=req.body.age
-
-        const u = await oneuser.save();
-        res.json(u)
+    const all = await user.find()    
+        res.json(all)
     }
     catch{
-        res.send("something went wrong")
+        console.log('get all error')
     }
 })
 
-app.delete("/:id",async(req,res)=>{
+app.delete('/:id', async(req,res)=>{
     try{
-        const oneuser = await user.findById(req.params.id);
-        oneuser.deleteOne();
-
-        res.send("record deleted")
+        const oneuser = await user.findById(req.params.id)
+        oneuser.deleteOne()
+        res.send("deleted")
     }
     catch{
-        res.send("something went wrong")
+        console.log("deletion error")
     }
 })
 
@@ -104,3 +112,14 @@ const user = new mongoose.Schema({
 })
 
 module.exports = mongoose.model('user',user)
+
+
+
+
+
+
+
+
+
+
+***** END *****
