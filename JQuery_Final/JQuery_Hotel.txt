@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Hotel Search</title>
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<body>
+  <div data-role="page" id="searchPage">
+    <div data-role="header">
+      <h1>Travel Buddy</h1>
+    </div>
+
+    <div data-role="content" style="display:block; width:600px; margin: auto;">
+      <form id="searchForm">
+        <div data-role="fieldcontain">
+          <label for="location">Location:</label>
+          <input type="text" id="location" name="location">
+        </div>
+        <div data-role="fieldcontain">
+          <label for="checkin">Check-in Date:</label>
+          <input type="date" id="checkin" name="checkin">
+        </div>
+        <div data-role="fieldcontain">
+          <label for="checkout">Check-out Date:</label>
+          <input type="date" id="checkout" name="checkout">
+        </div>
+        <button type="submit" data-theme="b">Search</button>
+      </form>
+    </div>
+  </div>
+
+  <div data-role="page" id="resultPage">
+    <div data-role="header">
+      <h1>Search Results</h1>
+    </div>
+
+    <div data-role="content" id="searchResults">
+      <!-- Search results will be dynamically added here -->
+    </div>
+  </div>
+
+  <script>
+    $(document).on("pagecreate", "#searchPage", function () {
+      $("#searchForm").submit(function (event) {
+        event.preventDefault();
+
+        var location = $("#location").val();
+        var checkin = $("#checkin").val();
+        var checkout = $("#checkout").val();
+        var guests = $("#guests").val();
+
+        // Simulated list of hotels for search
+        var hotels = [
+          {
+            name: "Hotel Villa",
+            address: "123 Main Street, Mumbai",
+            price: "$100"
+          },
+          {
+            name: "Hotel Orchid",
+            address: "456 Elm Street, Pune",
+            price: "$150"
+          },
+          {
+            name: "Hotel Lapinose",
+            address: "789 Oak Street, Amalner",
+            price: "$200"
+          },
+          {
+            name: "Hotel JW Marriot",
+            address: "456 Main Street, Jalgaon",
+            price: "$100"
+          },
+          {
+            name: "Hotel SeaLink",
+            address: "785 Olk Street, Jalgaon",
+            price: "$150"
+          },
+          {
+            name: "Hotel Essentric",
+            address: "406 Main Street, Pune",
+            price: "$120"
+          },
+          {
+            name: "Hotel Relax",
+            address: "366 Elm Street, Pune",
+            price: "$150"
+          },
+          {
+            name: "Hotel Garden",
+            address: "479 Olk Street, Mumbai",
+            price: "$150"
+          }
+        ];
+
+        // Filter hotels based on search criteria
+        var filteredHotels = hotels.filter(function (hotel) {
+          return hotel.address.toLowerCase().includes(location.toLowerCase());
+        });
+
+        // Display search results on the result page
+        var resultsHtml = "";
+
+        if (filteredHotels.length > 0) {
+          for (var i = 0; i < filteredHotels.length; i++) {
+            var hotel = filteredHotels[i];
+            resultsHtml += "<h2>" + hotel.name + "</h2>";
+            resultsHtml += "<p>Address: " + hotel.address + "</p>";
+            resultsHtml += "<p>Price: " + hotel.price + "</p>";
+            resultsHtml += "<hr>";
+          }
+        } else {
+          resultsHtml = "<p>No hotels found.</p>";
+        }
+        // Display results
+        $("#searchResults").html(resultsHtml);
+
+        // Navigate to the result page
+        $.mobile.changePage("#resultPage");
+      });
+    });
+
+  </script>
+</body>
+
+</html>
